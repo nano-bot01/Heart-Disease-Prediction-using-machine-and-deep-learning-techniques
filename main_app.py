@@ -5,7 +5,8 @@ from datetime import date
 
 # loading the saved model
 
-loaded_model = pickle.load(open("D:/FinalProject/trained_model.pkl", 'rb'))
+# loaded_model = pickle.load(open("D:/FinalProject/trained_model.pkl", 'rb'))
+loaded_model = pickle.load(open("model/trained_model.pkl", 'rb'))
 
 
 # creating a function for prediction
