@@ -102,54 +102,82 @@ def main():
 
     name = st.text_input('Full Name')
 
-    age = calculateAge(st.date_input('D. O. B.', value=date.today(),
-                                     min_value=date(date.today().year - 100, date.today().month, date.today().day)))
+    # age = calculateAge(st.date_input('D. O. B.', value=date.today(),
+    #                                  min_value=date(date.today().year - 100, date.today().month, date.today().day)))
+    age = calculateAge(st.date_input('D. O. B.', value=date.today(), min_value=date(date.today().year - 100, date.today().month, date.today().day)))
+
+    # sex = st.radio("SEX", ['Male', 'Female'], horizontal=True)
+    # if sex == 'Male':
+    #     sex = 1
+    # else:
+    #     sex = 0
 
     sex = st.radio("SEX", ['Male', 'Female'], horizontal=True)
-    if sex == 'Male':
-        sex = 1
-    else:
-        sex = 0
+    sex = 1 if sex == 'Male' else 0
+
 
     cp = chestPainType(st.select_slider("Chest pain type : ", ['Microvascular', 'Stable', 'Unstable', 'Variant']))
 
-    restbps = st.text_input("Resting BP : ")
+    # restbps = st.text_input("Resting BP : ")
 
-    chol = st.text_input("Serum Cholesterol (mg/dl) : ")
+    # chol = st.text_input("Serum Cholesterol (mg/dl) : ")
 
-    fbs = st.checkbox("Fasting blood sugar > 120 mg/dl : ")
-    if fbs:
-        fbs = 1
-    else:
-        fbs = 0
+    # fbs = st.checkbox("Fasting blood sugar > 120 mg/dl : ")
+    # if fbs:
+    #     fbs = 1
+    # else:
+    #     fbs = 0
 
-    exang = st.checkbox("Exercise induced angina : ")
-    if exang:
-        exang = 1
-    else:
-        exang = 0
+    # exang = st.checkbox("Exercise induced angina : ")
+    # if exang:
+    #     exang = 1
+    # else:
+    #     exang = 0
+
+    # # restecg = restEcgSelect(
+    # #     st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'], index=None,
+    # #                  placeholder="Select rest ecg type"))
 
     # restecg = restEcgSelect(
-    #     st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'], index=None,
-    #                  placeholder="Select rest ecg type"))
-
-    restecg = restEcgSelect(
-    st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'],
-                 index=0, placeholder="Select rest ecg type"))
+    # st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'],
+    #              index=0, placeholder="Select rest ecg type"))
 
     
-    thalach = st.text_input("Maximum heart rate achieved : ")
+    # thalach = st.text_input("Maximum heart rate achieved : ")
 
+    # oldpeak = st.number_input("Old peak : ")
+
+    # slope = slopeSelect(
+    #     st.selectbox("Slope of the peak exercise ST segment : ", ['Up Sloping', 'Flat', 'Down Sloping'], index=None,
+    #                  placeholder="Select slope type"))
+
+    # ca = st.number_input("Number of major vessels (0-3) : ", min_value=1, max_value=4) - 1
+
+    # thal = thalValue(st.selectbox('Thal Value : ', ['Normal', 'Fixed', 'Reversible'], index=None,
+    #                               placeholder="Select thal type"))
+
+    
+    restbps = st.number_input("Resting BP : ")
+    
+    chol = st.number_input("Serum Cholesterol (mg/dl) : ")
+    
+    fbs = st.checkbox("Fasting blood sugar > 120 mg/dl : ")
+    fbs = 1 if fbs else 0
+    
+    exang = st.checkbox("Exercise induced angina : ")
+    exang = 1 if exang else 0
+    
+    restecg = restEcgSelect(st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'], index=0))
+    
+    thalach = st.number_input("Maximum heart rate achieved : ")
+    
     oldpeak = st.number_input("Old peak : ")
-
-    slope = slopeSelect(
-        st.selectbox("Slope of the peak exercise ST segment : ", ['Up Sloping', 'Flat', 'Down Sloping'], index=None,
-                     placeholder="Select slope type"))
-
+    
+    slope = slopeSelect(st.selectbox("Slope of the peak exercise ST segment : ", ['Up Sloping', 'Flat', 'Down Sloping'], index=0))
+    
     ca = st.number_input("Number of major vessels (0-3) : ", min_value=1, max_value=4) - 1
-
-    thal = thalValue(st.selectbox('Thal Value : ', ['Normal', 'Fixed', 'Reversible'], index=None,
-                                  placeholder="Select thal type"))
+    
+    thal = thalValue(st.selectbox('Thal Value : ', ['Normal', 'Fixed', 'Reversible'], index=0))
 
 
     # performing diagnosis
