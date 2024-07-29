@@ -129,10 +129,15 @@ def main():
     else:
         exang = 0
 
-    restecg = restEcgSelect(
-        st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'], index=None,
-                     placeholder="Select rest ecg type"))
+    # restecg = restEcgSelect(
+    #     st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'], index=None,
+    #                  placeholder="Select rest ecg type"))
 
+    restecg = restEcgSelect(
+    st.selectbox("Resting Electrocardiograph Result  : ", ['Resting ECG', 'Ambulatory ECG', 'Exercise Stress test'],
+                 index=0, placeholder="Select rest ecg type"))
+
+    
     thalach = st.text_input("Maximum heart rate achieved : ")
 
     oldpeak = st.number_input("Old peak : ")
